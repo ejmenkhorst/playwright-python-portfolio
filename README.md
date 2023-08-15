@@ -1,13 +1,36 @@
-# playwright-python-portfolio
+# Playwright Python
 
-Playwright python project with the PyTest runner.
+This repo is my playground for applying Python with Playwright.
 
-# Installation
+## Project setup
 
-## Python version
+Please install all required packages by running ``` pip install -r requirements.txt```
 
-This project has been build with Python interpreter 3.9
+### Page Object Model
 
-## Install project based upon all the packages stated in requirements.txt
+All the page object models / components are stored in the **models** folder.
 
-```pip install -r requirements.txt```
+### Tests
+
+To execute the tests we make use of the PytTest testrunner.  
+The command to execute the tests is: ```pytest```
+
+#### E2E tests
+
+The beauty of the Playwright framework is that it manages automatically all the latest browser versions locally - you
+never have to align these manually on your local machine.
+
+We can run different browser engines with Playwright:
+
+- Chromium (by default - and always headless)
+- Firefox
+- Webkit
+
+To run on of these explicitly you can add it to the CLI with the --browser flag.
+
+- ```python -m pytest tests/e2e/ --browser webkit --headed```
+- ```python -m pytest tests/e2e/ --browser firefox --headed```
+
+#### API tests
+
+With Playwright, we can also do API testing in the same framework.
