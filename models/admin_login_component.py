@@ -10,7 +10,7 @@ class AdminLoginPage:
 		self._login_button = page.get_by_test_id('submit')
 
 	def navigate(self):
-		self.page.goto('https://automationintesting.online/#/admin')
+		self.page.goto('/#/admin')
 
 	def fill_username(self, u_name):
 		self._username_input.fill(u_name)
