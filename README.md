@@ -8,7 +8,7 @@ Please install all required packages by running ``` pip install -r requirements.
 
 ### Page Object Model
 
-All the page object models / components are stored in the **models** folder.
+All the page object models / components are stored in the [models](models) folder.
 
 ### Tests
 
@@ -28,20 +28,25 @@ We can run different browser engines with Playwright:
 
 To run on of these explicitly you can add it to the CLI with the --browser flag.
 
-- ```python -m pytest tests/e2e/ --browser chromium --headed --base-url https://automationintesting.online```
-- ```python -m pytest tests/e2e/ --browser webkit --headed --base-url https://automationintesting.online```
-- ```python -m pytest tests/e2e/ --browser firefox --headed --base-url https://automationintesting.online```
+```python -m pytest tests/e2e/ --browser chromium --headed --base-url https://automationintesting.online```  
+
+```python -m pytest tests/e2e/ --browser webkit --headed --base-url https://automationintesting.online```  
+
+```python -m pytest tests/e2e/ --browser firefox --headed --base-url https://automationintesting.online```  
+
+#### Configuration & Settings
+Other settings in regard to the configuration of pytest like standard commandline options are configured in [pytest.ini](pytest.ini)
 
 #### API tests with Playwright
 
-With Playwright, we can also do API testing in the same framework.
+With Playwright, we can also do API testing in the same framework.  
 For this demo purpose I used
-an [Vehicle Fleet Management API](https://car-fleet-management.herokuapp.com/swagger-ui.html) with simple CRUD
+a [Vehicle Fleet Management API](https://car-fleet-management.herokuapp.com/swagger-ui.html) with simple CRUD
 operations.
 
 To do a proper setup and teardown proces I implemented it with the help of fixtures which you can find
-in [conftest.py](tests/conftest.py)
+in [conftest.py](tests/conftest.py) here is also the cars webservice endpoint configured.
 
-To run on of these explicitly you can add it to the CLI with the following command:
+To run the API tests explicitly via the CLI run the following command:
 
-- ```python -m pytest tests/api/ --base-url https://car-fleet-management.herokuapp.com```
+```python -m pytest tests/api/```

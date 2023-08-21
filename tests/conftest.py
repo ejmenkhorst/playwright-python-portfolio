@@ -7,9 +7,18 @@ cars_endpoint = "https://car-fleet-management.herokuapp.com/cars/"
 
 @pytest.fixture
 def create_new_car_object():
-	data = requests.post(cars_endpoint, json={"build": 2010, "manufacturer": "JAHAHA", "model": "MUHAHA"},
-						 headers=headers).json()
-	yield
-	generated_id = data["id"]
-	return print(f"Car which was generated with ID: {generated_id} data from response created car: {data}")
-	requests.delete(cars_endpoint, json={})
+	new_car = requests.post(cars_endpoint, headers=headers, json={
+		"build": 2000,
+		"manufacturer": "Honda",
+		"model": "Accord"}).json()
+
+	yield new_car
+	generated_id = new_car["id"]
+	delete_new_car_object(generated_id)
+
+
+def delete_new_car_object(car_id):
+	# Cleanup testdata
+	res = requests.delete(f"{cars_endpoint}/{car_id}")
+	assert res.ok
+	assert res.status_code == 200
